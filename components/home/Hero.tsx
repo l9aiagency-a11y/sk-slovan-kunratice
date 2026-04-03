@@ -28,7 +28,26 @@ const DEFAULT_NEXT_MATCH: NextMatchData = {
 export default function Hero({ nextMatch }: HeroProps) {
   const NEXT_MATCH = nextMatch || DEFAULT_NEXT_MATCH;
   return (
-    <section className="relative max-w-7xl mx-auto px-4 lg:px-8 py-20 lg:py-28 overflow-hidden">
+    <section className="relative max-w-7xl mx-auto px-4 lg:px-8 py-20 lg:py-28 overflow-hidden rounded-2xl">
+      {/* Background field photo */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Football field background"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Dark gradient overlay so text stays readable */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--bg-dark) 40%, color-mix(in srgb, var(--bg-dark) 75%, transparent) 70%, color-mix(in srgb, var(--bg-dark) 55%, transparent) 100%)",
+          }}
+        />
+      </div>
+
       {/* Faint grid pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -36,7 +55,7 @@ export default function Hero({ nextMatch }: HeroProps) {
           backgroundImage:
             "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
-          opacity: 0.03,
+          opacity: 0.04,
         }}
       />
 
