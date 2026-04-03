@@ -38,12 +38,12 @@ export default function Hero({ nextMatch }: HeroProps) {
           className="object-cover object-center"
           priority
         />
-        {/* Dark gradient overlay so text stays readable */}
+        {/* Light gradient overlay so text stays readable */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, var(--bg-dark) 40%, color-mix(in srgb, var(--bg-dark) 75%, transparent) 70%, color-mix(in srgb, var(--bg-dark) 55%, transparent) 100%)",
+              "linear-gradient(135deg, #ffffff 35%, rgba(255,255,255,0.80) 60%, rgba(255,255,255,0.40) 100%)",
           }}
         />
       </div>
@@ -55,7 +55,7 @@ export default function Hero({ nextMatch }: HeroProps) {
           backgroundImage:
             "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
-          opacity: 0.04,
+          opacity: 0.06,
         }}
       />
 
@@ -151,7 +151,7 @@ export default function Hero({ nextMatch }: HeroProps) {
       <div
         className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, transparent, var(--bg-dark))",
+          background: "linear-gradient(to bottom, transparent, #FFFFFF)",
         }}
       />
 

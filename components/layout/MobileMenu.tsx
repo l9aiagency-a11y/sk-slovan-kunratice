@@ -45,7 +45,7 @@ export default function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[60] bg-[var(--bg-dark)] flex flex-col"
+          className="fixed inset-0 z-[60] bg-white flex flex-col"
         >
           {/* Top bar */}
           <div className="flex items-center justify-between px-4 h-16 shrink-0">

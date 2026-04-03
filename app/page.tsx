@@ -171,7 +171,7 @@ export default async function Home() {
             backgroundImage:
               "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
-            opacity: 0.02,
+            opacity: 0.04,
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 lg:px-8">

@@ -34,7 +34,7 @@ export default function Header() {
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--bg-dark)]/80 backdrop-blur-md border-b border-[var(--border)]"
+            ? "bg-white/90 backdrop-blur-md border-b border-[var(--border)]"
             : "bg-transparent"
         }`}
       >

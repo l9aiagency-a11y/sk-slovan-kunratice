@@ -60,7 +60,7 @@ export default async function GaleriePage() {
                         </div>
                       )}
                       {/* Photo count badge */}
-                      <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur text-white text-xs rounded-full px-2 py-1">
+                      <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur text-white text-xs rounded-full px-2 py-1">
                         📷 {photos.length} fotek
                       </div>
                     </div>
