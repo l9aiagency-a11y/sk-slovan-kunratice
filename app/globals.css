@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --club-primary: #1B6B3A;
+  --club-secondary: #2563EB;
+  --club-accent: #F5A623;
+  --bg-dark: #0A0A0F;
+  --bg-card: #12121A;
+  --bg-elevated: #1A1A26;
+  --bg-surface: #22222E;
+  --text-primary: #F0F0F5;
+  --text-secondary: #9A9AB0;
+  --text-muted: #5A5A72;
+  --border: #2A2A3A;
+  --win: #22C55E;
+  --draw: #F59E0B;
+  --loss: #EF4444;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-club-primary: var(--club-primary);
+  --color-club-secondary: var(--club-secondary);
+  --color-club-accent: var(--club-accent);
+  --color-dark: var(--bg-dark);
+  --color-card: var(--bg-card);
+  --color-elevated: var(--bg-elevated);
+  --color-surface: var(--bg-surface);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-win: var(--win);
+  --color-draw: var(--draw);
+  --color-loss: var(--loss);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
 }
