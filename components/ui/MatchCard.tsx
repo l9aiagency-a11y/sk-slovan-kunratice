@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type MatchCardProps = {
+  id?: string;
   date: string;
   homeTeam: string;
   awayTeam: string;
@@ -43,6 +45,7 @@ function TeamLogo({
 }
 
 export default function MatchCard({
+  id,
   date,
   homeTeam,
   awayTeam,
@@ -56,7 +59,7 @@ export default function MatchCard({
   const borderClass = result ? resultBorderMap[result] : "border-l-[var(--border)]";
   const hasScore = homeScore != null && awayScore != null;
 
-  return (
+  const inner = (
     <div
       className={`bg-[var(--bg-card)] border border-[var(--border)] border-l-[3px] ${borderClass} rounded-xl px-4 py-3 flex items-center gap-3 hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer`}
     >
@@ -85,4 +88,10 @@ export default function MatchCard({
       </div>
     </div>
   );
+
+  if (id) {
+    return <Link href={`/zapasy/${id}`}>{inner}</Link>;
+  }
+
+  return inner;
 }
