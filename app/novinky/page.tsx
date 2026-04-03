@@ -8,6 +8,13 @@ export const revalidate = 300;
 
 export const metadata = {
   title: "Novinky | SK Slovan Kunratice",
+  description:
+    "Nejnovější zprávy, reportáže a aktuality z SK Slovan Kunratice. Sledujte dění v klubu.",
+  openGraph: {
+    title: "Novinky | SK Slovan Kunratice",
+    description:
+      "Nejnovější zprávy a aktuality z SK Slovan Kunratice.",
+  },
 };
 
 function formatDate(dateStr: string) {

@@ -7,7 +7,14 @@ import EmptyState from "@/components/ui/EmptyState";
 export const revalidate = 300;
 
 export const metadata = {
-  title: "Galerie | SK Slovan Kunratice",
+  title: "Fotogalerie | SK Slovan Kunratice",
+  description:
+    "Fotografie ze zápasů, tréninků a akcí SK Slovan Kunratice. Sledujte živý fotbalový život v Kunraticích.",
+  openGraph: {
+    title: "Fotogalerie | SK Slovan Kunratice",
+    description:
+      "Fotografie ze zápasů, tréninků a akcí SK Slovan Kunratice.",
+  },
 };
 
 function formatDate(dateStr: string) {

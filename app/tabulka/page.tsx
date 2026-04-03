@@ -1,13 +1,21 @@
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_STANDINGS } from "@/lib/mock-data";
 import type { StandingRow } from "@/lib/mock-data";
+import { getTeamLogos } from "@/lib/team-logos";
 import PageHero from "@/components/ui/PageHero";
 import CompetitionTabs from "@/components/ui/CompetitionTabs";
 
 export const revalidate = 300;
 
 export const metadata = {
-  title: "Tabulka | SK Slovan Kunratice",
+  title: "Tabulka soutěže | SK Slovan Kunratice",
+  description:
+    "Aktuální tabulka soutěže pro všechny týmy SK Slovan Kunratice — muži, dorost, žáci.",
+  openGraph: {
+    title: "Tabulka soutěže | SK Slovan Kunratice",
+    description:
+      "Aktuální tabulka soutěže pro všechny týmy SK Slovan Kunratice.",
+  },
 };
 
 /** Preferred display order — muži first, then youth */
@@ -50,6 +58,9 @@ export default async function TabulkaPage() {
     );
   }
 
+  // Load team logos
+  const logos = await getTeamLogos();
+
   // Group by competition
   const grouped: Record<string, StandingRow[]> = {};
   for (const s of standingsRows) {
@@ -67,6 +78,7 @@ export default async function TabulkaPage() {
       points: s.points,
       form: Array.isArray(s.form) ? s.form : [],
       isOwnTeam: s.is_own_team,
+      logoUrl: logos[s.team_name] || null,
     });
   }
 
@@ -77,17 +89,15 @@ export default async function TabulkaPage() {
     return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
   });
 
-  // Derive subtitle from first competition
-  const subtitle = competitions[0]?.replace(/ 2025\/2026$/, "") ?? "";
-
   return (
     <main>
-      <PageHero title="Tabulka soutěže" subtitle={subtitle} />
+      <PageHero title="Tabulka soutěže" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
         <CompetitionTabs
           competitions={competitions}
           standings={grouped}
+          showSubtitle
         />
 
         <p className="text-gray-500 text-xs mt-4 text-center">

@@ -4,7 +4,14 @@ import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 
 export const metadata = {
-  title: "Klub | SK Slovan Kunratice",
+  title: "O klubu | SK Slovan Kunratice",
+  description:
+    "Informace o SK Slovan Kunratice — historie, areál, partneři a sponzoři. Tradiční pražský fotbalový klub v Kunraticích.",
+  openGraph: {
+    title: "O klubu | SK Slovan Kunratice",
+    description:
+      "Informace o SK Slovan Kunratice — historie, areál a partneři klubu.",
+  },
 };
 
 const tierClasses: Record<Sponsor["tier"], string> = {

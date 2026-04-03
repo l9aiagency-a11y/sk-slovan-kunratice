@@ -7,7 +7,14 @@ import MatchesClient from "@/components/zapasy/MatchesClient";
 export const revalidate = 300;
 
 export const metadata = {
-  title: "Zápasy | SK Slovan Kunratice",
+  title: "Zápasy a výsledky | SK Slovan Kunratice",
+  description:
+    "Výsledky, program a přehled zápasů všech týmů SK Slovan Kunratice. Sledujte výkony mužů i mládeže.",
+  openGraph: {
+    title: "Zápasy a výsledky | SK Slovan Kunratice",
+    description:
+      "Výsledky, program a přehled zápasů všech týmů SK Slovan Kunratice.",
+  },
 };
 
 function formatMatchDate(isoDate: string): string {

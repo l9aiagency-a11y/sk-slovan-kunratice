@@ -7,7 +7,14 @@ import Card from "@/components/ui/Card";
 export const revalidate = 300;
 
 export const metadata = {
-  title: "Týmy | SK Slovan Kunratice",
+  title: "Naše týmy | SK Slovan Kunratice",
+  description:
+    "Přehled všech týmů SK Slovan Kunratice — muži A, muži B, dorost, žáci a mládežnická akademie od U5 po U19.",
+  openGraph: {
+    title: "Naše týmy | SK Slovan Kunratice",
+    description:
+      "Přehled všech týmů SK Slovan Kunratice — muži, dorost, žáci a mládežnická akademie.",
+  },
 };
 
 const categoryBadge: Record<Team["category"], { label: string; color: string }> = {
