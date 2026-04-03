@@ -12,24 +12,21 @@ export async function seed() {
   const sb = createServerClient();
   const log: string[] = [];
 
-  // 1. Club settings
-  const { error: clubErr } = await sb.from('club_settings').upsert(
-    {
-      id: 1,
-      name: 'SK Slovan Kunratice',
-      logo_url: '/logo.png',
-      primary_color: '#1B6B3A',
-      secondary_color: '#2563EB',
-      accent_color: '#F5A623',
-      address: 'Volarská 5, Praha - Kunratice, 148 00',
-      phone: '774 897 881',
-      email: 'skkunratice.fotbal@seznam.cz',
-      facebook_url: 'https://www.facebook.com/fotbalkunratice',
-      motto: '"druhý nejznámější fotbalový balet"',
-      tagline: 'Kunratičtí hrají fotbal s příběhem, a to bez ohledu na výsledek.',
-    },
-    { onConflict: 'id' },
-  );
+  // 1. Club settings — delete existing, then insert fresh
+  await sb.from('club_settings').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+  const { error: clubErr } = await sb.from('club_settings').insert({
+    name: 'SK Slovan Kunratice',
+    logo_url: '/logo.png',
+    primary_color: '#1B6B3A',
+    secondary_color: '#2563EB',
+    accent_color: '#F5A623',
+    address: 'Volarská 5, Praha - Kunratice, 148 00',
+    phone: '774 897 881',
+    email: 'skkunratice.fotbal@seznam.cz',
+    facebook_url: 'https://www.facebook.com/fotbalkunratice',
+    motto: '"druhý nejznámější fotbalový balet"',
+    tagline: 'Kunratičtí hrají fotbal s příběhem, a to bez ohledu na výsledek.',
+  });
   if (clubErr) throw new Error(`club_settings: ${clubErr.message}`);
   log.push('club_settings: 1 row');
 
@@ -57,9 +54,8 @@ export async function seed() {
     sort_order: i,
     is_active: true,
   }));
-  const { error: sponsErr } = await sb
-    .from('sponsors')
-    .upsert(sponsorRows, { onConflict: 'name' });
+  await sb.from('sponsors').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+  const { error: sponsErr } = await sb.from('sponsors').insert(sponsorRows);
   if (sponsErr) throw new Error(`sponsors: ${sponsErr.message}`);
   log.push(`sponsors: ${sponsorRows.length} rows`);
 
