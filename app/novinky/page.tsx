@@ -3,6 +3,7 @@ import Image from "next/image";
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_NEWS, type Article } from "@/lib/mock-data";
 import PageHero from "@/components/ui/PageHero";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const revalidate = 300;
 
@@ -67,6 +68,7 @@ export default async function NovinkyPage() {
       <PageHero title="Novinky" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+        <FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <Link key={article.id} href={`/novinky/${article.slug}`}>
@@ -108,6 +110,7 @@ export default async function NovinkyPage() {
             </Link>
           ))}
         </div>
+        </FadeIn>
       </div>
     </main>
   );

@@ -4,6 +4,7 @@ import type { StandingRow } from "@/lib/mock-data";
 import { getTeamLogos } from "@/lib/team-logos";
 import PageHero from "@/components/ui/PageHero";
 import CompetitionTabs from "@/components/ui/CompetitionTabs";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const revalidate = 300;
 
@@ -46,13 +47,15 @@ export default async function TabulkaPage() {
           subtitle="Veolia Pražská teplárenská přebor mužů"
         />
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-          <CompetitionTabs
-            competitions={["Pražský přebor mužů 2025/2026"]}
-            standings={{ "Pražský přebor mužů 2025/2026": MOCK_STANDINGS }}
-          />
-          <p className="text-gray-500 text-xs mt-4 text-center">
-            Zdroj: fotbalpraha.cz
-          </p>
+          <FadeIn>
+            <CompetitionTabs
+              competitions={["Pražský přebor mužů 2025/2026"]}
+              standings={{ "Pražský přebor mužů 2025/2026": MOCK_STANDINGS }}
+            />
+            <p className="text-gray-500 text-xs mt-4 text-center">
+              Zdroj: fotbalpraha.cz
+            </p>
+          </FadeIn>
         </div>
       </main>
     );
@@ -94,15 +97,17 @@ export default async function TabulkaPage() {
       <PageHero title="Tabulka soutěže" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-        <CompetitionTabs
-          competitions={competitions}
-          standings={grouped}
-          showSubtitle
-        />
+        <FadeIn>
+          <CompetitionTabs
+            competitions={competitions}
+            standings={grouped}
+            showSubtitle
+          />
 
-        <p className="text-gray-500 text-xs mt-4 text-center">
-          Zdroj: fotbalpraha.cz
-        </p>
+          <p className="text-gray-500 text-xs mt-4 text-center">
+            Zdroj: fotbalpraha.cz
+          </p>
+        </FadeIn>
       </div>
     </main>
   );

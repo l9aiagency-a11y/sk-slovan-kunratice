@@ -3,6 +3,7 @@ import { MOCK_RESULTS } from "@/lib/mock-data";
 import type { Match } from "@/lib/mock-data";
 import PageHero from "@/components/ui/PageHero";
 import MatchesClient from "@/components/zapasy/MatchesClient";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const revalidate = 300;
 
@@ -77,7 +78,9 @@ export default async function ZapasyPage({
       <PageHero title="Zápasy & výsledky" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-        <MatchesClient matches={matches} initialTeam={team} />
+        <FadeIn>
+          <MatchesClient matches={matches} initialTeam={team} />
+        </FadeIn>
       </div>
     </main>
   );

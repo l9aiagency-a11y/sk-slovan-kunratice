@@ -3,6 +3,7 @@ import { createServerClient } from "@/lib/supabase";
 import { MOCK_TEAMS, type Team } from "@/lib/mock-data";
 import PageHero from "@/components/ui/PageHero";
 import Card from "@/components/ui/Card";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const revalidate = 300;
 
@@ -49,6 +50,7 @@ export default async function TymyPage() {
       <PageHero title="Naše týmy" subtitle="12 týmů od mužů po školičku" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+        <FadeIn>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {teams.map((team) => {
             const badge = categoryBadge[team.category];
@@ -72,6 +74,7 @@ export default async function TymyPage() {
             );
           })}
         </div>
+        </FadeIn>
       </div>
     </main>
   );
