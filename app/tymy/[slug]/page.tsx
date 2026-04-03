@@ -5,15 +5,17 @@ import {
   MOCK_TEAMS,
   MOCK_PLAYERS,
   MOCK_STAFF,
-  MOCK_RESULTS,
   type Team,
   type Player,
   type Staff,
   type Match,
+  type StandingRow,
 } from "@/lib/mock-data";
+import { TEAM_COMPETITIONS } from "@/lib/scraper";
 import PageHero from "@/components/ui/PageHero";
 import EmptyState from "@/components/ui/EmptyState";
 import MatchCard from "@/components/ui/MatchCard";
+import StandingsTable from "@/components/ui/StandingsTable";
 
 export const revalidate = 300;
 
@@ -31,6 +33,16 @@ function getInitials(firstName: string, lastName: string): string {
 function formatMatchDate(isoDate: string): string {
   const d = new Date(isoDate);
   return `${d.getDate()}. ${d.getMonth() + 1}.`;
+}
+
+function computeResult(
+  m: { home_score: number | null; away_score: number | null; is_home: boolean },
+): "W" | "D" | "L" | null {
+  if (m.home_score === null || m.away_score === null) return null;
+  if (m.is_home) {
+    return m.home_score > m.away_score ? "W" : m.home_score < m.away_score ? "L" : "D";
+  }
+  return m.away_score > m.home_score ? "W" : m.away_score < m.home_score ? "L" : "D";
 }
 
 export async function generateMetadata({
@@ -81,6 +93,38 @@ export default async function TeamDetailPage({
     team = mock;
   }
 
+  // ── Find competition config for this team ──
+  const compConfig = TEAM_COMPETITIONS.find((c) => c.teamSlug === slug);
+  const competitionKey = compConfig
+    ? `${compConfig.competitionName} 2025/2026`
+    : null;
+
+  // ── Fetch standings for this team's competition ──
+  let standings: StandingRow[] = [];
+  if (competitionKey) {
+    const { data: standingsRows } = await sb
+      .from("standings")
+      .select("*")
+      .eq("competition", competitionKey)
+      .order("position", { ascending: true });
+
+    if (standingsRows && standingsRows.length > 0) {
+      standings = standingsRows.map((s) => ({
+        position: s.position,
+        team: s.team_name,
+        played: s.played,
+        won: s.won,
+        drawn: s.drawn,
+        lost: s.lost,
+        goalsFor: s.goals_for,
+        goalsAgainst: s.goals_against,
+        points: s.points,
+        form: Array.isArray(s.form) ? s.form : [],
+        isOwnTeam: s.is_own_team,
+      }));
+    }
+  }
+
   // Fetch players
   let players: Player[] = [];
   if (teamId) {
@@ -103,7 +147,6 @@ export default async function TeamDetailPage({
     }
   }
 
-  // Fall back to mock for muzi-a
   if (players.length === 0 && slug === "muzi-a") {
     players = MOCK_PLAYERS;
   }
@@ -130,62 +173,131 @@ export default async function TeamDetailPage({
     staff = MOCK_STAFF;
   }
 
-  // Fetch recent matches
-  let matches: Match[] = [];
+  // ── Fetch ALL matches for this team, sorted by date ──
+  let allMatches: Array<{
+    id: string;
+    date: string;
+    home_team: string;
+    away_team: string;
+    home_score: number | null;
+    away_score: number | null;
+    is_home: boolean;
+    competition: string;
+    round: string | null;
+    venue: string | null;
+  }> = [];
+
   if (teamId) {
     const { data: matchRows } = await sb
       .from("matches")
       .select("*")
       .eq("team_id", teamId)
-      .order("date", { ascending: false })
-      .limit(5);
+      .order("date", { ascending: true });
 
     if (matchRows && matchRows.length > 0) {
-      matches = matchRows.map((m) => {
-        let result: "W" | "D" | "L" | null = null;
-        if (m.home_score !== null && m.away_score !== null) {
-          if (m.is_home) {
-            result =
-              m.home_score > m.away_score
-                ? "W"
-                : m.home_score < m.away_score
-                  ? "L"
-                  : "D";
-          } else {
-            result =
-              m.away_score > m.home_score
-                ? "W"
-                : m.away_score < m.home_score
-                  ? "L"
-                  : "D";
-          }
-        }
-        return {
-          id: m.id,
-          date: formatMatchDate(m.date),
-          homeTeam: m.home_team,
-          awayTeam: m.away_team,
-          homeScore: m.home_score,
-          awayScore: m.away_score,
-          isHome: m.is_home,
-          result,
-          competition: m.competition,
-          round: m.round || undefined,
-          venue: m.venue || undefined,
-        };
-      });
+      allMatches = matchRows;
     }
   }
 
-  if (matches.length === 0 && slug === "muzi-a") {
-    matches = MOCK_RESULTS.slice(0, 5);
-  }
+  const now = new Date();
+
+  // Past results (played, most recent first)
+  const pastResults: Match[] = allMatches
+    .filter((m) => m.home_score !== null && m.away_score !== null)
+    .reverse()
+    .slice(0, 10)
+    .map((m) => ({
+      id: m.id,
+      date: formatMatchDate(m.date),
+      homeTeam: m.home_team,
+      awayTeam: m.away_team,
+      homeScore: m.home_score,
+      awayScore: m.away_score,
+      isHome: m.is_home,
+      result: computeResult(m),
+      competition: m.competition,
+      round: m.round || undefined,
+      venue: m.venue || undefined,
+    }));
+
+  // Upcoming matches (no score yet, soonest first)
+  const upcomingMatches: Match[] = allMatches
+    .filter(
+      (m) =>
+        m.home_score === null &&
+        m.away_score === null &&
+        new Date(m.date) >= now,
+    )
+    .slice(0, 5)
+    .map((m) => ({
+      id: m.id,
+      date: formatMatchDate(m.date),
+      homeTeam: m.home_team,
+      awayTeam: m.away_team,
+      homeScore: null,
+      awayScore: null,
+      isHome: m.is_home,
+      result: null,
+      competition: m.competition,
+      round: m.round || undefined,
+      venue: m.venue || undefined,
+    }));
 
   return (
     <main>
       <PageHero title={team.name} subtitle={team.competition} />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-16">
+        {/* Tabulka soutěže */}
+        {standings.length > 0 && (
+          <section>
+            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+              Tabulka soutěže
+            </h2>
+            <StandingsTable rows={standings} />
+            <p className="text-[var(--text-muted)] text-xs mt-2">
+              Zdroj: fotbalpraha.cz
+            </p>
+          </section>
+        )}
+
+        {/* Nadcházející zápasy */}
+        {upcomingMatches.length > 0 && (
+          <section>
+            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+              Nadcházející zápasy
+            </h2>
+            <div className="space-y-2">
+              {upcomingMatches.map((match) => (
+                <MatchCard key={match.id} {...match} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Poslední výsledky */}
+        {pastResults.length > 0 && (
+          <section>
+            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+              Poslední výsledky
+            </h2>
+            <div className="space-y-2">
+              {pastResults.map((match) => (
+                <MatchCard key={match.id} {...match} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* No data state */}
+        {standings.length === 0 &&
+          pastResults.length === 0 &&
+          upcomingMatches.length === 0 &&
+          players.length === 0 &&
+          staff.length === 0 && (
+            <EmptyState message="Data pro tento tým budou brzy k dispozici" />
+          )}
+
         {/* Soupiska */}
         <section>
           <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
@@ -240,20 +352,6 @@ export default async function TeamDetailPage({
                   </span>
                   <span className="text-sm text-[var(--text-muted)]">{s.role}</span>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Poslední zápasy */}
-        {matches.length > 0 && (
-          <section>
-            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
-              Poslední zápasy
-            </h2>
-            <div className="space-y-2">
-              {matches.map((match) => (
-                <MatchCard key={match.id} {...match} />
               ))}
             </div>
           </section>
