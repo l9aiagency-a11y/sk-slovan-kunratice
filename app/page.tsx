@@ -105,8 +105,8 @@ export default async function Home() {
   const { data: standingsRows } = await sb
     .from("standings")
     .select("*")
-    .order("position", { ascending: true })
-    .limit(8);
+    .eq("competition", "Pražský přebor mužů 2025/2026")
+    .order("position", { ascending: true });
 
   const standings: StandingRow[] | undefined =
     standingsRows && standingsRows.length > 0
