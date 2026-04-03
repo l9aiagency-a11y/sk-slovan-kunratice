@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --club-primary: #1B6B3A;
-  --club-secondary: #2563EB;
-  --club-accent: #F5A623;
+  --club-primary: #6B21A8;
+  --club-secondary: #7C3AED;
+  --club-accent: #A855F7;
   --bg-dark: #FFFFFF;
   --bg-card: #F8F9FA;
   --bg-elevated: #F0F1F3;
