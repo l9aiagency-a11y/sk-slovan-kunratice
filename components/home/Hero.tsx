@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import CountdownTimer from "@/components/home/CountdownTimer";
+import { MOCK_NEXT_MATCH } from "@/lib/mock-data";
 
 const NEXT_MATCH = {
   homeTeam: "Kunratice",
   awayTeam: "Aritma B",
-  date: "2026-04-04T15:00:00+02:00",
-  venue: "Volarská",
+  date: MOCK_NEXT_MATCH.date,
+  venue: MOCK_NEXT_MATCH.venue,
   label: "Pátek 4. 4.",
   time: "15:00",
 };
