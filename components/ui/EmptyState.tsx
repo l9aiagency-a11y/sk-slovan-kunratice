@@ -9,7 +9,7 @@ type EmptyStateProps = {
 export default function EmptyState({ message, href, linkText }: EmptyStateProps) {
   return (
     <div className="py-16 text-center">
-      <p className="text-[var(--text-muted)]">{message}</p>
+      <p className="text-gray-500">{message}</p>
       {href && linkText && (
         <Link
           href={href}

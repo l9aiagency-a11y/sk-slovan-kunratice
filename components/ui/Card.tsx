@@ -7,7 +7,7 @@ type CardProps = {
 export default function Card({ children, highlighted = false, className = "" }: CardProps) {
   return (
     <div
-      className={`bg-[var(--bg-card)] border border-[var(--border)] rounded-xl hover:bg-[var(--bg-elevated)] transition-colors duration-200 ${
+      className={`bg-gray-50 border border-gray-300 rounded-xl hover:bg-gray-100 transition-colors duration-200 ${
         highlighted ? "border-l-2 border-l-[var(--club-primary)]" : ""
       } ${className}`}
     >

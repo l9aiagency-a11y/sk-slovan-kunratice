@@ -15,7 +15,7 @@ export default function SectionHeader({ title, subtitle, href, linkText }: Secti
           {title}
         </h2>
         {subtitle && (
-          <p className="text-[var(--text-secondary)] text-sm mt-1">{subtitle}</p>
+          <p className="text-gray-700 text-sm mt-1">{subtitle}</p>
         )}
       </div>
       {href && linkText && (

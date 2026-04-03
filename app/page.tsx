@@ -152,7 +152,7 @@ export default async function Home() {
       <Hero nextMatch={nextMatch} />
 
       {/* Results — bg-card */}
-      <section className="section-glow-top w-full bg-[var(--bg-card)] py-16">
+      <section className="section-glow-top w-full bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <FadeIn>
             <RecentResults results={recentResults} />
@@ -163,7 +163,7 @@ export default async function Home() {
       <SectionDivider />
 
       {/* Standings — bg-dark with subtle grid */}
-      <section className="relative w-full bg-[var(--bg-dark)] py-16 overflow-hidden">
+      <section className="relative w-full bg-white py-16 overflow-hidden">
         {/* Very subtle grid pattern */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -184,7 +184,7 @@ export default async function Home() {
       <SectionDivider />
 
       {/* News — bg-card */}
-      <section className="section-glow-top w-full bg-[var(--bg-card)] py-16">
+      <section className="section-glow-top w-full bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <FadeIn>
             <NewsPreview articles={articles} />
@@ -195,7 +195,7 @@ export default async function Home() {
       <SectionDivider />
 
       {/* Youth — bg-dark */}
-      <section className="w-full bg-[var(--bg-dark)] py-16">
+      <section className="w-full bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <FadeIn>
             <YouthSection />

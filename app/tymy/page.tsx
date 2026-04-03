@@ -53,13 +53,13 @@ export default async function TymyPage() {
                   >
                     {badge.label}
                   </span>
-                  <h2 className="font-heading font-semibold text-lg text-[var(--text-primary)]">
+                  <h2 className="font-heading font-semibold text-lg text-gray-900">
                     {team.name}
                   </h2>
                   {team.ageGroup && (
                     <p className="text-sm text-[var(--club-accent)] mt-1">{team.ageGroup}</p>
                   )}
-                  <p className="text-sm text-[var(--text-muted)] mt-1">{team.competition}</p>
+                  <p className="text-sm text-gray-500 mt-1">{team.competition}</p>
                 </Card>
               </Link>
             );

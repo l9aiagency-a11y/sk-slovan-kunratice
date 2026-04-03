@@ -8,9 +8,9 @@ export const metadata = {
 };
 
 const tierClasses: Record<Sponsor["tier"], string> = {
-  main: "px-6 py-3 text-sm font-semibold text-[var(--text-primary)] border-[var(--club-primary)]/30",
-  partner: "px-5 py-2.5 text-xs font-medium text-[var(--text-secondary)]",
-  supporter: "px-4 py-2 text-xs text-[var(--text-muted)]",
+  main: "px-6 py-3 text-sm font-semibold text-gray-900 border-[var(--club-primary)]/30",
+  partner: "px-5 py-2.5 text-xs font-medium text-gray-700",
+  supporter: "px-4 py-2 text-xs text-gray-500",
 };
 
 const tierLabels: Record<Sponsor["tier"], string> = {
@@ -49,10 +49,10 @@ export default async function KlubPage() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-16">
         {/* O nás */}
         <section>
-          <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+          <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
             O nás
           </h2>
-          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 lg:p-8 space-y-4 text-[var(--text-secondary)] leading-relaxed">
+          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 lg:p-8 space-y-4 text-gray-700 leading-relaxed">
             <p>
               SK Slovan Kunratice je tradiční pražský fotbalový klub s dlouhou
               historií sahající do první poloviny 20. století. Klub sídlí v
@@ -75,24 +75,24 @@ export default async function KlubPage() {
 
         {/* Kde nás najdete */}
         <section>
-          <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+          <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
             Kde nás najdete
           </h2>
-          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden">
-            <div className="bg-[var(--bg-surface)] h-64 flex items-center justify-center">
+          <div className="bg-gray-50 border border-gray-300 rounded-xl overflow-hidden">
+            <div className="bg-gray-200 h-64 flex items-center justify-center">
               <div className="text-center">
                 <p className="text-2xl mb-2">📍</p>
-                <p className="font-heading font-semibold text-[var(--text-primary)]">
+                <p className="font-heading font-semibold text-gray-900">
                   Sportovní areál Volarská
                 </p>
-                <p className="text-sm text-[var(--text-muted)] mt-1">
+                <p className="text-sm text-gray-500 mt-1">
                   Volarská 462/5, 148 00 Praha 4 – Kunratice
                 </p>
               </div>
             </div>
             <div className="p-5 flex items-center justify-between">
               <div>
-                <p className="text-sm text-[var(--text-secondary)]">
+                <p className="text-sm text-gray-700">
                   Zastávka bus 165, 203 — Kunratice, Volarská
                 </p>
               </div>
@@ -109,7 +109,7 @@ export default async function KlubPage() {
 
         {/* Sponzoři */}
         <section>
-          <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+          <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
             Partneři a sponzoři
           </h2>
           <div className="space-y-8">
@@ -118,14 +118,14 @@ export default async function KlubPage() {
               if (tierSponsors.length === 0) return null;
               return (
                 <div key={tier}>
-                  <p className="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-3">
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">
                     {tierLabels[tier]}
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     {tierSponsors.map((sponsor) => {
                       const inner = (
                         <div
-                          className={`bg-[var(--bg-surface)] rounded-lg border border-[var(--border)] transition-all duration-300 hover:border-[var(--club-primary)]/50 hover:bg-[var(--bg-elevated)] flex items-center ${tierClasses[tier]}`}
+                          className={`bg-gray-200 rounded-lg border border-gray-300 transition-all duration-300 hover:border-purple-300 hover:bg-gray-100 flex items-center ${tierClasses[tier]}`}
                         >
                           {sponsor.name}
                         </div>

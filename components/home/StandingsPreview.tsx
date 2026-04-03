@@ -19,7 +19,7 @@ export default function StandingsPreview({ standings }: StandingsPreviewProps) {
       <div className="mt-6">
         <StandingsTable rows={rows} />
       </div>
-      <p className="text-[var(--text-muted)] text-[11px] mt-2">
+      <p className="text-gray-500 text-[11px] mt-2">
         Zdroj: fotbalpraha.cz
       </p>
     </section>

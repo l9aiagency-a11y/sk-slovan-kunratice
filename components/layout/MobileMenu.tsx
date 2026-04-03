@@ -60,7 +60,7 @@ export default function MobileMenu({
             </Link>
             <button
               onClick={onClose}
-              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors"
               aria-label="Zavřít menu"
             >
               <X size={24} />
@@ -84,7 +84,7 @@ export default function MobileMenu({
                     className={`font-heading font-semibold text-2xl uppercase tracking-wider transition-colors ${
                       isActive
                         ? "text-[var(--club-primary)]"
-                        : "text-[var(--text-primary)] hover:text-[var(--club-primary)]"
+                        : "text-gray-900 hover:text-[var(--club-primary)]"
                     }`}
                   >
                     {link.label}

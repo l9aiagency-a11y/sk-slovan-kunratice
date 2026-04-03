@@ -31,7 +31,7 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
     <div className="flex items-center gap-3">
       <button
         onClick={copyLink}
-        className="text-sm px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] transition-colors"
+        className="text-sm px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
       >
         {copied ? "Zkopírováno!" : "Kopírovat odkaz"}
       </button>
@@ -39,7 +39,7 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
         href={fbShareUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] transition-colors"
+        className="text-sm px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
       >
         Facebook
       </a>

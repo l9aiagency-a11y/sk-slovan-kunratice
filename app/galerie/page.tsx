@@ -43,9 +43,9 @@ export default async function GaleriePage() {
 
               return (
                 <Link key={gallery.id} href={`/galerie/${gallery.id}`}>
-                  <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer">
+                  <div className="bg-gray-50 border border-gray-300 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors cursor-pointer">
                     {/* Cover image area */}
-                    <div className="h-48 bg-[var(--bg-surface)] relative">
+                    <div className="h-48 bg-gray-200 relative">
                       {coverPhoto ? (
                         <Image
                           src={coverPhoto.url}
@@ -67,16 +67,16 @@ export default async function GaleriePage() {
 
                     {/* Card content */}
                     <div className="p-4">
-                      <h2 className="font-heading font-semibold text-[var(--text-primary)]">
+                      <h2 className="font-heading font-semibold text-gray-900">
                         {gallery.title}
                       </h2>
                       {gallery.date && (
-                        <p className="text-xs text-[var(--text-muted)] mt-1">
+                        <p className="text-xs text-gray-500 mt-1">
                           {formatDate(gallery.date)}
                         </p>
                       )}
                       {gallery.description && (
-                        <p className="text-sm text-[var(--text-secondary)] mt-2 line-clamp-2">
+                        <p className="text-sm text-gray-700 mt-2 line-clamp-2">
                           {gallery.description}
                         </p>
                       )}

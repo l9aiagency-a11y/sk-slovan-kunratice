@@ -45,7 +45,7 @@ export default async function TabulkaPage() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
         <StandingsTable rows={standings} />
 
-        <p className="text-[var(--text-muted)] text-xs mt-4 text-center">
+        <p className="text-gray-500 text-xs mt-4 text-center">
           Zdroj: fotbalpraha.cz
         </p>
       </div>

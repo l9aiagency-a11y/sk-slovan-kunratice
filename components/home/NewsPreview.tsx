@@ -54,19 +54,19 @@ function ArticleImage({
 function LargeArticleCard({ article }: { article: Article }) {
   return (
     <Link href={`/novinky/${article.slug}`} className="group block">
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden md:col-span-2 hover:border-[var(--club-primary)]/40 transition-colors">
+      <div className="bg-gray-50 border border-gray-300 rounded-xl overflow-hidden md:col-span-2 hover:border-[var(--club-primary)]/40 transition-colors">
         <ArticleImage article={article} height="h-52" />
         <div className="p-5">
           <div className="flex items-center gap-1">
-            <span className="text-[var(--text-muted)] text-xs">{formatDate(article.date)}</span>
+            <span className="text-gray-500 text-xs">{formatDate(article.date)}</span>
             <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] bg-[var(--club-primary)]/10 rounded-full px-2 py-0.5 ml-2">
               {article.category}
             </span>
           </div>
-          <h3 className="font-heading font-bold text-lg mt-2 text-[var(--text-primary)] group-hover:text-[var(--club-primary)] transition-colors">
+          <h3 className="font-heading font-bold text-lg mt-2 text-gray-900 group-hover:text-[var(--club-primary)] transition-colors">
             {article.title}
           </h3>
-          <p className="text-[var(--text-secondary)] text-sm mt-1 line-clamp-2">
+          <p className="text-gray-700 text-sm mt-1 line-clamp-2">
             {article.excerpt}
           </p>
         </div>
@@ -78,19 +78,19 @@ function LargeArticleCard({ article }: { article: Article }) {
 function SmallArticleCard({ article }: { article: Article }) {
   return (
     <Link href={`/novinky/${article.slug}`} className="group block">
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--club-primary)]/40 transition-colors">
+      <div className="bg-gray-50 border border-gray-300 rounded-xl overflow-hidden hover:border-[var(--club-primary)]/40 transition-colors">
         <ArticleImage article={article} height="h-36" />
         <div className="p-4">
           <div className="flex items-center gap-1">
-            <span className="text-[var(--text-muted)] text-xs">{formatDate(article.date)}</span>
+            <span className="text-gray-500 text-xs">{formatDate(article.date)}</span>
             <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] bg-[var(--club-primary)]/10 rounded-full px-2 py-0.5 ml-2">
               {article.category}
             </span>
           </div>
-          <h3 className="font-heading font-bold text-base mt-2 text-[var(--text-primary)] group-hover:text-[var(--club-primary)] transition-colors">
+          <h3 className="font-heading font-bold text-base mt-2 text-gray-900 group-hover:text-[var(--club-primary)] transition-colors">
             {article.title}
           </h3>
-          <p className="text-[var(--text-secondary)] text-sm mt-1 line-clamp-2">
+          <p className="text-gray-700 text-sm mt-1 line-clamp-2">
             {article.excerpt}
           </p>
         </div>

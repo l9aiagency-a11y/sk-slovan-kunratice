@@ -22,15 +22,15 @@ export default function YouthSection() {
         {youthTeams.map((team) => (
           <div
             key={team.slug}
-            className="bg-[var(--bg-card)] border border-[var(--border)] border-t-2 border-t-[var(--club-primary)] rounded-xl p-4 min-w-[200px] shrink-0"
+            className="bg-gray-50 border border-gray-300 border-t-2 border-t-[var(--club-primary)] rounded-xl p-4 min-w-[200px] shrink-0"
           >
-            <p className="font-heading font-semibold text-sm text-[var(--text-primary)]">
+            <p className="font-heading font-semibold text-sm text-gray-900">
               {ageGroupEmoji(team.ageGroup)} {team.name}
             </p>
             {team.ageGroup && (
               <p className="text-[var(--club-accent)] font-semibold text-xs mt-1">{team.ageGroup}</p>
             )}
-            <p className="text-[var(--text-secondary)] text-xs mt-0.5">{team.competition}</p>
+            <p className="text-gray-700 text-xs mt-0.5">{team.competition}</p>
           </div>
         ))}
       </div>

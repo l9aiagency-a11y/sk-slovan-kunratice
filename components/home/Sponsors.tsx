@@ -20,8 +20,8 @@ const tierSize: Record<Sponsor["tier"], { w: number; h: number; containerClass: 
 
 export default function Sponsors() {
   return (
-    <div className="py-12 border-t border-[var(--border)]">
-      <p className="text-center text-[var(--text-muted)] text-xs uppercase tracking-widest mb-8">
+    <div className="py-12 border-t border-gray-300">
+      <p className="text-center text-gray-500 text-xs uppercase tracking-widest mb-8">
         Partneři a sponzoři
       </p>
       <div className="flex flex-wrap items-center justify-center gap-4">
@@ -38,7 +38,7 @@ export default function Sponsors() {
             />
           ) : (
             <span
-              className={`text-[var(--text-secondary)] font-medium ${
+              className={`text-gray-700 font-medium ${
                 sponsor.tier === "main" ? "text-sm" : "text-xs"
               }`}
             >
@@ -48,7 +48,7 @@ export default function Sponsors() {
 
           const wrapper = (
             <div
-              className={`group bg-[var(--bg-surface)] rounded-lg border border-[var(--border)] transition-all duration-300 hover:border-[var(--club-primary)]/50 hover:bg-[var(--bg-elevated)] flex items-center justify-center ${size.containerClass}`}
+              className={`group bg-gray-200 rounded-lg border border-gray-300 transition-all duration-300 hover:border-purple-300 hover:bg-gray-100 flex items-center justify-center ${size.containerClass}`}
             >
               {inner}
             </div>

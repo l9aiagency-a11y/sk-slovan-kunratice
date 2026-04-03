@@ -251,11 +251,11 @@ export default async function TeamDetailPage({
         {/* Tabulka soutěže */}
         {standings.length > 0 && (
           <section>
-            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+            <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
               Tabulka soutěže
             </h2>
             <StandingsTable rows={standings} />
-            <p className="text-[var(--text-muted)] text-xs mt-2">
+            <p className="text-gray-500 text-xs mt-2">
               Zdroj: fotbalpraha.cz
             </p>
           </section>
@@ -264,7 +264,7 @@ export default async function TeamDetailPage({
         {/* Nadcházející zápasy */}
         {upcomingMatches.length > 0 && (
           <section>
-            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+            <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
               Nadcházející zápasy
             </h2>
             <div className="space-y-2">
@@ -278,7 +278,7 @@ export default async function TeamDetailPage({
         {/* Poslední výsledky */}
         {pastResults.length > 0 && (
           <section>
-            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+            <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
               Poslední výsledky
             </h2>
             <div className="space-y-2">
@@ -300,7 +300,7 @@ export default async function TeamDetailPage({
 
         {/* Soupiska */}
         <section>
-          <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+          <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
             Soupiska
           </h2>
 
@@ -309,22 +309,22 @@ export default async function TeamDetailPage({
               {players.map((player) => (
                 <div
                   key={player.id}
-                  className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-4 relative text-center"
+                  className="bg-gray-50 border border-gray-300 rounded-xl p-4 relative text-center"
                 >
                   {player.number != null && (
                     <span className="absolute top-3 right-3 font-heading font-bold text-sm text-[var(--club-accent)]">
                       #{player.number}
                     </span>
                   )}
-                  <div className="w-16 h-16 rounded-full bg-[var(--bg-surface)] mx-auto flex items-center justify-center mb-3">
-                    <span className="text-lg font-bold text-[var(--text-muted)]">
+                  <div className="w-16 h-16 rounded-full bg-gray-200 mx-auto flex items-center justify-center mb-3">
+                    <span className="text-lg font-bold text-gray-500">
                       {getInitials(player.first_name, player.last_name)}
                     </span>
                   </div>
-                  <p className="font-semibold text-sm text-[var(--text-primary)]">
+                  <p className="font-semibold text-sm text-gray-900">
                     {player.first_name} {player.last_name}
                   </p>
-                  <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                  <p className="text-xs text-gray-500 mt-0.5">
                     {positionLabel[player.position]}
                   </p>
                 </div>
@@ -338,19 +338,19 @@ export default async function TeamDetailPage({
         {/* Realizační tým */}
         {staff.length > 0 && (
           <section>
-            <h2 className="font-heading font-bold text-2xl text-[var(--text-primary)] mb-6">
+            <h2 className="font-heading font-bold text-2xl text-gray-900 mb-6">
               Realizační tým
             </h2>
             <div className="space-y-3">
               {staff.map((s) => (
                 <div
                   key={s.id}
-                  className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl px-5 py-3 flex items-center justify-between"
+                  className="bg-gray-50 border border-gray-300 rounded-xl px-5 py-3 flex items-center justify-between"
                 >
-                  <span className="font-semibold text-[var(--text-primary)]">
+                  <span className="font-semibold text-gray-900">
                     {s.name}
                   </span>
-                  <span className="text-sm text-[var(--text-muted)]">{s.role}</span>
+                  <span className="text-sm text-gray-500">{s.role}</span>
                 </div>
               ))}
             </div>

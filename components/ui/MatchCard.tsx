@@ -41,7 +41,7 @@ function TeamLogo({
       <div className="w-6 h-6 rounded-full shrink-0 bg-gradient-to-br from-[var(--club-primary)] to-[var(--club-secondary)]" />
     );
   }
-  return <div className="w-6 h-6 rounded-full shrink-0 bg-[var(--bg-surface)]" />;
+  return <div className="w-6 h-6 rounded-full shrink-0 bg-gray-200" />;
 }
 
 export default function MatchCard({
@@ -61,28 +61,28 @@ export default function MatchCard({
 
   const inner = (
     <div
-      className={`bg-[var(--bg-card)] border border-[var(--border)] border-l-[3px] ${borderClass} rounded-xl px-4 py-3 flex items-center gap-3 hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer`}
+      className={`bg-gray-50 border border-gray-300 border-l-[3px] ${borderClass} rounded-xl px-4 py-3 flex items-center gap-3 hover:bg-gray-100 transition-colors cursor-pointer`}
     >
       {/* Date */}
-      <span className="text-[var(--text-muted)] text-xs w-14 shrink-0">{date}</span>
+      <span className="text-gray-500 text-xs w-14 shrink-0">{date}</span>
 
       {/* Home team */}
       <div className="flex items-center gap-2 flex-1 min-w-0">
         <TeamLogo logo={homeLogo} name={homeTeam} isOurs={isHome} />
-        <span className="text-sm font-semibold text-[var(--text-primary)] truncate">
+        <span className="text-sm font-semibold text-gray-900 truncate">
           {homeTeam}
         </span>
       </div>
 
       {/* Score */}
-      <div className="font-heading font-extrabold text-lg tabular-nums min-w-[60px] text-center text-[var(--text-primary)] shrink-0">
+      <div className="font-heading font-extrabold text-lg tabular-nums min-w-[60px] text-center text-gray-900 shrink-0">
         {hasScore ? `${homeScore} : ${awayScore}` : "vs"}
       </div>
 
       {/* Away team */}
       <div className="flex items-center gap-2 flex-row-reverse flex-1 min-w-0">
         <TeamLogo logo={awayLogo} name={awayTeam} isOurs={!isHome} />
-        <span className="text-sm font-semibold text-[var(--text-primary)] truncate text-right">
+        <span className="text-sm font-semibold text-gray-900 truncate text-right">
           {awayTeam}
         </span>
       </div>

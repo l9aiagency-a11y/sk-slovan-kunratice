@@ -63,7 +63,7 @@ export default async function NovinkyPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <Link key={article.id} href={`/novinky/${article.slug}`}>
-              <article className="group bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden hover:bg-[var(--bg-elevated)] hover:border-[var(--club-primary)]/40 transition-colors">
+              <article className="group bg-gray-50 border border-gray-300 rounded-xl overflow-hidden hover:bg-gray-100 hover:border-[var(--club-primary)]/40 transition-colors">
                 {article.coverImage ? (
                   <div className="h-48 relative overflow-hidden">
                     <Image
@@ -83,17 +83,17 @@ export default async function NovinkyPage() {
                 )}
                 <div className="p-5">
                   <div className="flex items-center gap-1">
-                    <span className="text-[var(--text-muted)] text-xs">
+                    <span className="text-gray-500 text-xs">
                       {formatDate(article.date)}
                     </span>
                     <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] bg-[var(--club-primary)]/10 rounded-full px-2 py-0.5 ml-2">
                       {article.category}
                     </span>
                   </div>
-                  <h2 className="font-heading font-bold text-lg mt-2 text-[var(--text-primary)]">
+                  <h2 className="font-heading font-bold text-lg mt-2 text-gray-900">
                     {article.title}
                   </h2>
-                  <p className="text-sm text-[var(--text-secondary)] line-clamp-2 mt-1">
+                  <p className="text-sm text-gray-700 line-clamp-2 mt-1">
                     {article.excerpt}
                   </p>
                 </div>

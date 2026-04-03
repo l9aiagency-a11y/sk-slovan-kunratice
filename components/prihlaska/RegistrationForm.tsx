@@ -27,10 +27,10 @@ function getCategoryForYear(year: number): string {
 }
 
 const inputClasses =
-  "w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--club-primary)] focus:outline-none transition-colors";
+  "w-full bg-gray-200 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-[var(--club-primary)] focus:outline-none transition-colors";
 
 const errorInputClasses =
-  "w-full bg-[var(--bg-surface)] border border-red-500 rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-red-400 focus:outline-none transition-colors";
+  "w-full bg-gray-200 border border-red-500 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-red-400 focus:outline-none transition-colors";
 
 export default function RegistrationForm() {
   const [form, setForm] = useState<FormState>({
@@ -109,14 +109,14 @@ export default function RegistrationForm() {
 
   if (sent) {
     return (
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-8 text-center">
+      <div className="bg-gray-50 border border-gray-300 rounded-xl p-8 text-center">
         <div className="w-16 h-16 rounded-full bg-green-500/15 flex items-center justify-center mx-auto mb-4">
           <span className="text-3xl">✅</span>
         </div>
-        <p className="font-heading font-bold text-xl text-[var(--text-primary)]">
+        <p className="font-heading font-bold text-xl text-gray-900">
           Přihláška odeslána!
         </p>
-        <p className="text-[var(--text-secondary)] mt-3 leading-relaxed">
+        <p className="text-gray-700 mt-3 leading-relaxed">
           Děkujeme! Ozveme se vám do 3 dnů s informacemi o tréninku.
         </p>
       </div>
@@ -127,7 +127,7 @@ export default function RegistrationForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Child name */}
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Jméno a příjmení dítěte *
         </label>
         <input
@@ -145,7 +145,7 @@ export default function RegistrationForm() {
       {/* Birth year + Category — side by side on larger screens */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
             Ročník narození *
           </label>
           <select
@@ -166,7 +166,7 @@ export default function RegistrationForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
             Preferovaná kategorie
           </label>
           <input
@@ -176,7 +176,7 @@ export default function RegistrationForm() {
             className={inputClasses}
             placeholder="Automaticky dle ročníku"
           />
-          <p className="text-xs text-[var(--text-muted)] mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             Automaticky vyplněno, lze upravit
           </p>
         </div>
@@ -184,7 +184,7 @@ export default function RegistrationForm() {
 
       {/* Parent name */}
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Jméno rodiče / zákonného zástupce *
         </label>
         <input
@@ -202,7 +202,7 @@ export default function RegistrationForm() {
       {/* Phone + Email — side by side */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
             Telefon *
           </label>
           <input
@@ -218,7 +218,7 @@ export default function RegistrationForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
             Email *
           </label>
           <input
@@ -236,7 +236,7 @@ export default function RegistrationForm() {
 
       {/* Note */}
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Poznámka
         </label>
         <textarea
@@ -256,7 +256,7 @@ export default function RegistrationForm() {
         {loading ? "Odesílám přihlášku..." : "Odeslat přihlášku"}
       </Button>
 
-      <p className="text-xs text-[var(--text-muted)] text-center">
+      <p className="text-xs text-gray-500 text-center">
         * Povinné pole. Vaše osobní údaje zpracováváme v souladu s GDPR.
       </p>
     </form>

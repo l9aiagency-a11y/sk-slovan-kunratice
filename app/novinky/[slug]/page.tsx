@@ -89,14 +89,14 @@ export default async function ArticleDetailPage({
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Meta info */}
         <div className="flex items-center gap-3 mb-8">
-          <span className="text-sm text-[var(--text-muted)]">
+          <span className="text-sm text-gray-500">
             {formatDate(article.date)}
           </span>
           <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] bg-[var(--club-primary)]/10 rounded-full px-2 py-0.5">
             {article.category}
           </span>
           {article.author && (
-            <span className="text-sm text-[var(--text-muted)]">
+            <span className="text-sm text-gray-500">
               &middot; {article.author}
             </span>
           )}
@@ -125,13 +125,13 @@ export default async function ArticleDetailPage({
         {article.body ? (
           <ArticleBody content={article.body} />
         ) : (
-          <p className="text-[var(--text-secondary)] leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             {article.excerpt}
           </p>
         )}
 
         {/* Share + navigation */}
-        <div className="border-t border-[var(--border)] mt-12 pt-8 flex items-center justify-between">
+        <div className="border-t border-gray-300 mt-12 pt-8 flex items-center justify-between">
           <Link
             href="/novinky"
             className="text-sm text-[var(--club-primary)] hover:underline"

@@ -39,12 +39,12 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-8 text-center">
+      <div className="bg-gray-50 border border-gray-300 rounded-xl p-8 text-center">
         <p className="text-2xl mb-3">✅</p>
-        <p className="font-heading font-semibold text-lg text-[var(--text-primary)]">
+        <p className="font-heading font-semibold text-lg text-gray-900">
           Děkujeme za zprávu!
         </p>
-        <p className="text-sm text-[var(--text-muted)] mt-2">
+        <p className="text-sm text-gray-500 mt-2">
           Ozveme se vám co nejdříve.
         </p>
       </div>
@@ -52,12 +52,12 @@ export default function ContactForm() {
   }
 
   const inputClasses =
-    "w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--club-primary)] focus:outline-none transition-colors";
+    "w-full bg-gray-200 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-[var(--club-primary)] focus:outline-none transition-colors";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Jméno *
         </label>
         <input
@@ -71,7 +71,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Email *
         </label>
         <input
@@ -85,7 +85,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Předmět
         </label>
         <input
@@ -98,7 +98,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
           Zpráva *
         </label>
         <textarea

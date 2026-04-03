@@ -38,7 +38,7 @@ function DigitGroup({ value, label }: { value: string; label: string }) {
       <span className="font-heading font-extrabold text-xl text-[var(--club-accent)] tabular-nums">
         {value}
       </span>
-      <span className="font-body font-medium text-[8px] text-[var(--text-muted)] uppercase tracking-widest mt-0.5">
+      <span className="font-body font-medium text-[8px] text-gray-500 uppercase tracking-widest mt-0.5">
         {label}
       </span>
     </div>
@@ -47,7 +47,7 @@ function DigitGroup({ value, label }: { value: string; label: string }) {
 
 function Separator() {
   return (
-    <span className="text-[var(--text-muted)] text-xl font-bold pb-3 select-none">:</span>
+    <span className="text-gray-500 text-xl font-bold pb-3 select-none">:</span>
   );
 }
 
@@ -79,7 +79,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
       );
     }
     return (
-      <span className="text-[var(--text-muted)] text-xs uppercase tracking-widest">
+      <span className="text-gray-500 text-xs uppercase tracking-widest">
         Skončeno
       </span>
     );

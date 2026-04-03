@@ -34,7 +34,7 @@ export default function Header() {
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-md border-b border-[var(--border)]"
+            ? "bg-white/90 backdrop-blur-md border-b border-gray-300"
             : "bg-transparent"
         }`}
       >
@@ -61,8 +61,8 @@ export default function Header() {
                   href={link.href}
                   className={`font-body font-medium text-[13px] uppercase tracking-wider transition-colors relative pb-0.5 ${
                     isActive
-                      ? "text-[var(--text-primary)] border-b-2 border-[var(--club-primary)]"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                      ? "text-gray-900 border-b-2 border-[var(--club-primary)]"
+                      : "text-gray-700 hover:text-gray-900"
                   }`}
                 >
                   {link.label}
@@ -77,7 +77,7 @@ export default function Header() {
               href="https://www.facebook.com/fotbalkunratice"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors"
               aria-label="Facebook"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -86,7 +86,7 @@ export default function Header() {
 
           {/* Mobile — menu button */}
           <button
-            className="lg:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="lg:hidden text-gray-700 hover:text-gray-900 transition-colors"
             onClick={() => setMenuOpen(true)}
             aria-label="Otevřít menu"
           >

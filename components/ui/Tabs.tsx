@@ -16,7 +16,7 @@ export default function Tabs({ tabs, active, onChange }: TabsProps) {
           className={`px-4 py-1.5 rounded-full text-xs font-semibold font-heading uppercase tracking-wide transition-colors ${
             active === tab.value
               ? "bg-[var(--club-primary)] text-white"
-              : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-100"
           }`}
         >
           {tab.label}

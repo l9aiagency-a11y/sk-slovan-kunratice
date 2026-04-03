@@ -16,7 +16,7 @@ export default function ChipFilter({ options, selected, onChange }: ChipFilterPr
           className={`px-4 py-1.5 rounded-full text-xs font-semibold font-heading uppercase tracking-wide transition-colors ${
             selected === option.value
               ? "bg-[var(--club-primary)] text-white"
-              : "border border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]"
+              : "border border-gray-300 text-gray-700 hover:bg-gray-100"
           }`}
         >
           {option.label}

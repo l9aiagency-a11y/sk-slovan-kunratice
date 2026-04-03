@@ -23,7 +23,7 @@ const primaryClasses =
   "bg-[var(--club-primary)] text-white rounded-full px-6 py-3 font-heading font-semibold uppercase text-[13px] tracking-wide hover:brightness-110 hover:-translate-y-px hover:shadow-lg transition-all inline-block";
 
 const secondaryClasses =
-  "bg-transparent border border-[var(--border)] text-[var(--text-primary)] rounded-full px-6 py-3 font-heading font-semibold uppercase text-[13px] hover:bg-[var(--bg-elevated)] transition-all inline-block";
+  "bg-transparent border border-gray-300 text-gray-900 rounded-full px-6 py-3 font-heading font-semibold uppercase text-[13px] hover:bg-gray-100 transition-all inline-block";
 
 export default function Button({
   variant = "primary",

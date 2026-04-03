@@ -100,8 +100,8 @@ export default function Hero({ nextMatch }: HeroProps) {
               background: "radial-gradient(circle, color-mix(in srgb, var(--club-primary) 8%, transparent), transparent 70%)",
             }}
           />
-        <div className="relative bg-white/90 backdrop-blur-sm border border-[var(--border)] rounded-2xl p-6 shadow-lg">
-          <p className="text-[var(--text-muted)] text-xs uppercase tracking-widest mb-4">
+        <div className="relative bg-white/90 backdrop-blur-sm border border-gray-300 rounded-2xl p-6 shadow-lg">
+          <p className="text-gray-500 text-xs uppercase tracking-widest mb-4">
             Příští zápas · {NEXT_MATCH.label}
           </p>
 
@@ -118,18 +118,18 @@ export default function Hero({ nextMatch }: HeroProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-sm font-bold text-[var(--text-primary)]">
+              <span className="text-sm font-bold text-gray-900">
                 {NEXT_MATCH.homeTeam}
               </span>
             </div>
 
             {/* VS */}
-            <span className="text-2xl font-extrabold text-[var(--text-muted)]">VS</span>
+            <span className="text-2xl font-extrabold text-gray-500">VS</span>
 
             {/* Away — Aritma B */}
             <div className="flex flex-col items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-[var(--bg-surface)]" />
-              <span className="text-sm font-bold text-[var(--text-primary)]">
+              <div className="w-12 h-12 rounded-full bg-gray-200" />
+              <span className="text-sm font-bold text-gray-900">
                 {NEXT_MATCH.awayTeam}
               </span>
             </div>
@@ -141,7 +141,7 @@ export default function Hero({ nextMatch }: HeroProps) {
           </div>
 
           {/* Venue */}
-          <p className="text-[var(--text-muted)] text-xs text-center mt-3">
+          <p className="text-gray-500 text-xs text-center mt-3">
             {NEXT_MATCH.label} · {NEXT_MATCH.time} · {NEXT_MATCH.venue}
           </p>
         </div>

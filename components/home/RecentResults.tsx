@@ -40,7 +40,7 @@ export default function RecentResults({ results: propResults }: RecentResultsPro
             className={`px-4 py-1.5 rounded-full text-xs font-semibold font-heading uppercase tracking-wide transition-colors ${
               activeTeam === team.value
                 ? "bg-[var(--club-primary)] text-white"
-                : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-100"
             }`}
           >
             {team.label}
@@ -67,7 +67,7 @@ export default function RecentResults({ results: propResults }: RecentResultsPro
           ))}
         </div>
       ) : (
-        <p className="text-[var(--text-muted)] text-sm py-8 text-center">
+        <p className="text-gray-500 text-sm py-8 text-center">
           Žádné výsledky k dispozici.
         </p>
       )}

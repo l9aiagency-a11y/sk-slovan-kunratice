@@ -15,14 +15,14 @@ export default function KontaktPage() {
           {/* Left: Contact info */}
           <div className="space-y-8">
             <div>
-              <h2 className="font-heading font-bold text-xl text-[var(--text-primary)] mb-4">
+              <h2 className="font-heading font-bold text-xl text-gray-900 mb-4">
                 Kontaktní údaje
               </h2>
-              <div className="space-y-4 text-[var(--text-secondary)]">
+              <div className="space-y-4 text-gray-700">
                 <div className="flex items-start gap-3">
                   <span className="text-lg mt-0.5">📍</span>
                   <div>
-                    <p className="font-semibold text-[var(--text-primary)]">Adresa</p>
+                    <p className="font-semibold text-gray-900">Adresa</p>
                     <p>Volarská 462/5</p>
                     <p>148 00 Praha 4 – Kunratice</p>
                   </div>
@@ -30,7 +30,7 @@ export default function KontaktPage() {
                 <div className="flex items-start gap-3">
                   <span className="text-lg mt-0.5">📧</span>
                   <div>
-                    <p className="font-semibold text-[var(--text-primary)]">Email</p>
+                    <p className="font-semibold text-gray-900">Email</p>
                     <a
                       href="mailto:info@skslovankunratice.cz"
                       className="text-[var(--club-primary)] hover:underline"
@@ -42,7 +42,7 @@ export default function KontaktPage() {
                 <div className="flex items-start gap-3">
                   <span className="text-lg mt-0.5">📱</span>
                   <div>
-                    <p className="font-semibold text-[var(--text-primary)]">Telefon</p>
+                    <p className="font-semibold text-gray-900">Telefon</p>
                     <a
                       href="tel:+420123456789"
                       className="text-[var(--club-primary)] hover:underline"
@@ -55,10 +55,10 @@ export default function KontaktPage() {
             </div>
 
             {/* Map placeholder */}
-            <div className="bg-[var(--bg-surface)] border border-[var(--border)] rounded-xl h-64 flex items-center justify-center">
+            <div className="bg-gray-200 border border-gray-300 rounded-xl h-64 flex items-center justify-center">
               <div className="text-center">
                 <p className="text-3xl mb-2">🗺️</p>
-                <p className="text-sm text-[var(--text-muted)]">
+                <p className="text-sm text-gray-500">
                   Volarská 462/5, Praha – Kunratice
                 </p>
                 <a
@@ -75,7 +75,7 @@ export default function KontaktPage() {
 
           {/* Right: Contact form */}
           <div>
-            <h2 className="font-heading font-bold text-xl text-[var(--text-primary)] mb-4">
+            <h2 className="font-heading font-bold text-xl text-gray-900 mb-4">
               Napište nám
             </h2>
             <ContactForm />

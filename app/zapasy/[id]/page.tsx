@@ -70,7 +70,7 @@ export default async function MatchDetailPage({
       <div className="w-full h-1" style={{ backgroundColor: barColor }} />
 
       {/* Hero */}
-      <section className="w-full bg-[var(--bg-card)] py-16 lg:py-24">
+      <section className="w-full bg-gray-50 py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-6 sm:gap-10">
             {/* Home team */}
@@ -78,8 +78,8 @@ export default async function MatchDetailPage({
               <p
                 className={`font-heading font-bold text-lg sm:text-2xl uppercase ${
                   m.is_home
-                    ? "text-[var(--text-primary)]"
-                    : "text-[var(--text-secondary)]"
+                    ? "text-gray-900"
+                    : "text-gray-700"
                 }`}
               >
                 {m.home_team}
@@ -89,13 +89,13 @@ export default async function MatchDetailPage({
             {/* Score */}
             <div className="shrink-0">
               {hasScore ? (
-                <p className="font-heading font-extrabold text-5xl sm:text-6xl text-[var(--text-primary)] tabular-nums">
+                <p className="font-heading font-extrabold text-5xl sm:text-6xl text-gray-900 tabular-nums">
                   {m.home_score}
-                  <span className="text-[var(--text-muted)] mx-2">:</span>
+                  <span className="text-gray-500 mx-2">:</span>
                   {m.away_score}
                 </p>
               ) : (
-                <p className="font-heading font-extrabold text-3xl sm:text-4xl text-[var(--text-muted)]">
+                <p className="font-heading font-extrabold text-3xl sm:text-4xl text-gray-500">
                   vs
                 </p>
               )}
@@ -106,8 +106,8 @@ export default async function MatchDetailPage({
               <p
                 className={`font-heading font-bold text-lg sm:text-2xl uppercase ${
                   !m.is_home
-                    ? "text-[var(--text-primary)]"
-                    : "text-[var(--text-secondary)]"
+                    ? "text-gray-900"
+                    : "text-gray-700"
                 }`}
               >
                 {m.away_team}
@@ -116,7 +116,7 @@ export default async function MatchDetailPage({
           </div>
 
           {/* Match info */}
-          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[var(--text-muted)]">
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
             <span>{formatFullDate(m.date)}</span>
             {m.round && <span>{m.round}</span>}
             <span>{m.competition}</span>
@@ -129,31 +129,31 @@ export default async function MatchDetailPage({
       <div className="max-w-4xl mx-auto px-4 lg:px-8 py-12">
         {/* Scorers / notes if they exist */}
         {m.scorers && (
-          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 mb-6">
-            <h3 className="font-heading font-bold text-sm uppercase text-[var(--text-muted)] mb-3">
+          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-6">
+            <h3 className="font-heading font-bold text-sm uppercase text-gray-500 mb-3">
               Střelci
             </h3>
-            <p className="text-[var(--text-primary)] text-sm">{m.scorers}</p>
+            <p className="text-gray-900 text-sm">{m.scorers}</p>
           </div>
         )}
 
         {m.lineup && (
-          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 mb-6">
-            <h3 className="font-heading font-bold text-sm uppercase text-[var(--text-muted)] mb-3">
+          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-6">
+            <h3 className="font-heading font-bold text-sm uppercase text-gray-500 mb-3">
               Sestava
             </h3>
-            <p className="text-[var(--text-primary)] text-sm whitespace-pre-line">
+            <p className="text-gray-900 text-sm whitespace-pre-line">
               {m.lineup}
             </p>
           </div>
         )}
 
         {m.notes && (
-          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 mb-6">
-            <h3 className="font-heading font-bold text-sm uppercase text-[var(--text-muted)] mb-3">
+          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-6">
+            <h3 className="font-heading font-bold text-sm uppercase text-gray-500 mb-3">
               Poznámky
             </h3>
-            <p className="text-[var(--text-secondary)] text-sm whitespace-pre-line">
+            <p className="text-gray-700 text-sm whitespace-pre-line">
               {m.notes}
             </p>
           </div>
