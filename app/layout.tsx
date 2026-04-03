@@ -3,6 +3,7 @@ import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PublicLayout from "@/components/layout/PublicLayout";
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
@@ -60,9 +61,13 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-dark text-primary font-body antialiased">
-        <Header />
+        <PublicLayout>
+          <Header />
+        </PublicLayout>
         <main id="main-content">{children}</main>
-        <Footer />
+        <PublicLayout>
+          <Footer />
+        </PublicLayout>
       </body>
     </html>
   );
