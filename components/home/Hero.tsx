@@ -59,7 +59,7 @@ export default function Hero({ nextMatch }: HeroProps) {
         }}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left — Club identity */}
         <div>
           <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-accent)] border border-white/20 bg-white/10 rounded-full px-3 py-1 mb-4">
