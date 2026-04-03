@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/novinky", label: "Novinky" },
@@ -107,7 +106,7 @@ export default function Footer() {
                   className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] text-sm hover:text-[var(--text-primary)] transition-colors"
                   aria-label="Facebook"
                 >
-                  <Facebook size={16} />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                   <span>Facebook</span>
                 </a>
               </li>
