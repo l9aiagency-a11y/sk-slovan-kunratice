@@ -55,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="cs" className={`${montserrat.variable} ${inter.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6B21A8" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
