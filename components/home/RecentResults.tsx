@@ -3,18 +3,23 @@
 import { useState } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import MatchCard from "@/components/ui/MatchCard";
-import { MOCK_RESULTS } from "@/lib/mock-data";
+import { Match, MOCK_RESULTS } from "@/lib/mock-data";
 
 const TEAM_OPTIONS = [
   { label: "Muži A", value: "muzi-a" },
   { label: "Muži B", value: "muzi-b" },
 ];
 
-export default function RecentResults() {
+interface RecentResultsProps {
+  results?: Match[];
+}
+
+export default function RecentResults({ results: propResults }: RecentResultsProps) {
   const [activeTeam, setActiveTeam] = useState("muzi-a");
 
+  const dataSource = propResults && propResults.length > 0 ? propResults : MOCK_RESULTS;
   // For now only Muži A data exists
-  const results = activeTeam === "muzi-a" ? MOCK_RESULTS : [];
+  const results = activeTeam === "muzi-a" ? dataSource : [];
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { MOCK_NEWS, Article } from "@/lib/mock-data";
+import { MOCK_NEWS, type Article } from "@/lib/mock-data";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 function formatDate(dateStr: string) {
@@ -66,8 +66,13 @@ function SmallArticleCard({ article }: { article: Article }) {
   );
 }
 
-export default function NewsPreview() {
-  const [first, ...rest] = MOCK_NEWS;
+interface NewsPreviewProps {
+  articles?: Article[];
+}
+
+export default function NewsPreview({ articles }: NewsPreviewProps) {
+  const data = articles && articles.length > 0 ? articles : MOCK_NEWS;
+  const [first, ...rest] = data;
   const sideArticles = rest.slice(0, 2);
 
   return (

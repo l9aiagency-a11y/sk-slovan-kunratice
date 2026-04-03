@@ -3,7 +3,20 @@ import Button from "@/components/ui/Button";
 import CountdownTimer from "@/components/home/CountdownTimer";
 import { MOCK_NEXT_MATCH } from "@/lib/mock-data";
 
-const NEXT_MATCH = {
+interface NextMatchData {
+  homeTeam: string;
+  awayTeam: string;
+  date: string;
+  venue: string;
+  label: string;
+  time: string;
+}
+
+interface HeroProps {
+  nextMatch?: NextMatchData;
+}
+
+const DEFAULT_NEXT_MATCH: NextMatchData = {
   homeTeam: "Kunratice",
   awayTeam: "Aritma B",
   date: MOCK_NEXT_MATCH.date,
@@ -12,7 +25,8 @@ const NEXT_MATCH = {
   time: "15:00",
 };
 
-export default function Hero() {
+export default function Hero({ nextMatch }: HeroProps) {
+  const NEXT_MATCH = nextMatch || DEFAULT_NEXT_MATCH;
   return (
     <section className="relative max-w-7xl mx-auto px-4 lg:px-8 py-20 lg:py-28 overflow-hidden">
       {/* Faint grid pattern overlay */}
