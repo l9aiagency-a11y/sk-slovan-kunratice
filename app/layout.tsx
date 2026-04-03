@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
@@ -58,7 +60,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-dark text-primary font-body antialiased">
+        <Header />
         <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );
