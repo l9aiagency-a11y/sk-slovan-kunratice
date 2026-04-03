@@ -264,6 +264,7 @@ export const MOCK_NEWS: Article[] = [
   {
     id: "news-1",
     title: "Kunratice deklasovaly Podolí 5:0",
+    coverImage: "/images/match-01.jpg",
     excerpt:
       "Domácí výkon soboty patřil jednoznačně Kunraticím. Pět branek ve třech čtvrtinách zápasu potvrdilo aktuální formu mužů A a posunulo je na čtvrté místo tabulky Pražského přeboru.",
     body: `# Kunratice deklasovaly Podolí 5:0
@@ -292,6 +293,7 @@ Do druhé půle vstoupily Kunratice stejně aktivně. Tři branky v rozmezí 55.
   {
     id: "news-2",
     title: "Jarní příprava: nové posily v kádru",
+    coverImage: "/images/match-atmosphere.jpg",
     excerpt:
       "Vedení klubu potvrdilo příchod dvou nových hráčů před jarní částí sezony. Kádr mužů A se rozšíří o ofenzivní zálohu a zkušeného stopera z pražské I. A třídy.",
     body: `# Jarní příprava: nové posily v kádru
@@ -316,6 +318,7 @@ V rámci zimní přípravy odehrály Kunratice čtyři přátelské zápasy se s
   {
     id: "news-3",
     title: "Mládežnický turnaj O pohár starosty",
+    coverImage: "/images/youth-training.jpg",
     excerpt:
       "Tradičního turnaje O pohár starosty MČ Kunratice se letos zúčastnilo osm mládežnických týmů. Naši žáci U13 postoupili do finále a obsadili skvělé druhé místo.",
     body: `# Mládežnický turnaj O pohár starosty
@@ -340,6 +343,7 @@ Děkujeme všem rodičům a dobrovolníkům, kteří pomohli s organizací turna
   {
     id: "news-4",
     title: "Výroční valná hromada klubu",
+    coverImage: "/images/field.jpg",
     excerpt:
       "Na výroční valné hromadě SK Slovan Kunratice byl schválen rozpočet na rok 2026, zvoleno nové vedení a představeny plány rozšíření mládežnické akademie o kategorie U5 a U7.",
     body: `# Výroční valná hromada klubu

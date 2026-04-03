@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_NEWS, type Article } from "@/lib/mock-data";
 import PageHero from "@/components/ui/PageHero";
@@ -62,14 +63,15 @@ export default async function NovinkyPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <Link key={article.id} href={`/novinky/${article.slug}`}>
-              <article className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden hover:bg-[var(--bg-elevated)] transition-colors">
+              <article className="group bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden hover:bg-[var(--bg-elevated)] hover:border-[var(--club-primary)]/40 transition-colors">
                 {article.coverImage ? (
-                  <div className="h-48 overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                  <div className="h-48 relative overflow-hidden">
+                    <Image
                       src={article.coverImage}
                       alt={article.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                 ) : (

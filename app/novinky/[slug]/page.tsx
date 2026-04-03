@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_NEWS, type Article } from "@/lib/mock-data";
 import PageHero from "@/components/ui/PageHero";
@@ -103,12 +104,13 @@ export default async function ArticleDetailPage({
 
         {/* Cover image / placeholder */}
         {article.coverImage ? (
-          <div className="rounded-xl overflow-hidden mb-10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="rounded-xl overflow-hidden mb-10 relative h-72 md:h-96">
+            <Image
               src={article.coverImage}
               alt={article.title}
-              className="w-full h-auto"
+              fill
+              className="object-cover object-center"
+              priority
             />
           </div>
         ) : (
