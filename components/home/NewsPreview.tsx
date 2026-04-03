@@ -8,6 +8,12 @@ function formatDate(dateStr: string) {
   return date.toLocaleDateString("cs-CZ", { day: "numeric", month: "long", year: "numeric" });
 }
 
+const categoryGradients: Record<string, string> = {
+  "Muži": "from-[var(--club-primary)] to-[var(--club-secondary)]",
+  "Mládež": "from-emerald-600 to-emerald-800",
+  "Klub": "from-slate-600 to-slate-800",
+};
+
 function ArticleImage({
   article,
   height,
@@ -15,9 +21,15 @@ function ArticleImage({
   article: Article;
   height: string;
 }) {
+  const gradient = categoryGradients[article.category] || "from-[var(--bg-elevated)] to-[var(--bg-surface)]";
+
   if (article.coverImage) {
     return (
       <div className={`${height} relative overflow-hidden`}>
+        {/* Colored fallback behind the image in case it fails to load */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
+          <span className="text-4xl opacity-30">⚽</span>
+        </div>
         <Image
           src={article.coverImage}
           alt={article.title}
@@ -32,9 +44,9 @@ function ArticleImage({
   }
   return (
     <div
-      className={`${height} bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-surface)] flex items-center justify-center`}
+      className={`${height} bg-gradient-to-br ${gradient} flex items-center justify-center`}
     >
-      <span className="text-4xl opacity-10">⚽</span>
+      <span className="text-4xl opacity-30">⚽</span>
     </div>
   );
 }

@@ -43,11 +43,15 @@ export default function StandingsTable({ rows, highlightTeam }: StandingsTablePr
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {rows.map((row, index) => {
               const isHighlighted = row.isOwnTeam || row.team === highlightTeam;
+              // Use index+1 as position fallback — the scraper may store all positions as 1
+              const displayPosition = rows.length > 1 && rows.every(r => r.position === rows[0].position)
+                ? index + 1
+                : row.position;
               return (
                 <tr
-                  key={row.position}
+                  key={`${displayPosition}-${row.team}`}
                   className={
                     isHighlighted
                       ? "border-t border-[var(--border)]/50 bg-[var(--club-primary)]/10 border-l-2 border-l-[var(--club-primary)] shadow-[inset_0_0_20px_rgba(27,107,58,0.08)]"
@@ -56,7 +60,7 @@ export default function StandingsTable({ rows, highlightTeam }: StandingsTablePr
                 >
                   <td className="px-3 py-3">
                     <span className="font-heading font-bold text-sm text-[var(--text-primary)]">
-                      {row.position}
+                      {displayPosition}
                     </span>
                   </td>
                   <td className="px-3 py-3">

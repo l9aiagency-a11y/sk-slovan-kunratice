@@ -38,12 +38,12 @@ export default function Hero({ nextMatch }: HeroProps) {
           className="object-cover object-center"
           priority
         />
-        {/* Light gradient overlay so text stays readable */}
+        {/* Dark left-side gradient overlay so white text stays readable */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #ffffff 35%, rgba(255,255,255,0.80) 60%, rgba(255,255,255,0.40) 100%)",
+              "linear-gradient(to right, rgba(26,26,46,0.92) 0%, rgba(26,26,46,0.7) 45%, rgba(26,26,46,0.3) 70%, transparent 100%)",
           }}
         />
       </div>
@@ -62,17 +62,17 @@ export default function Hero({ nextMatch }: HeroProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left — Club identity */}
         <div>
-          <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] border border-[var(--club-primary)]/30 bg-[var(--club-primary)]/10 rounded-full px-3 py-1 mb-4">
+          <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-accent)] border border-white/20 bg-white/10 rounded-full px-3 py-1 mb-4">
             Pražský přebor · 5. liga
           </span>
 
-          <h1 className="font-heading font-extrabold text-5xl lg:text-7xl uppercase text-[var(--text-primary)] leading-none tracking-tight">
+          <h1 className="font-heading font-extrabold text-5xl lg:text-7xl uppercase text-white leading-none tracking-tight">
             SK SLOVAN
             <br />
             KUNRATICE
           </h1>
 
-          <p className="text-[var(--text-secondary)] mt-4 max-w-md leading-relaxed">
+          <p className="text-white/80 mt-4 max-w-md leading-relaxed">
             Kunratičtí hrají fotbal s příběhem, a to bez ohledu na výsledek.
           </p>
 
@@ -80,7 +80,7 @@ export default function Hero({ nextMatch }: HeroProps) {
             <Button variant="primary" href="/zapasy">
               Rozpis zápasů
             </Button>
-            <Button variant="secondary" href="/novinky">
+            <Button variant="secondary" href="/novinky" className="!border-white/30 !text-white hover:!bg-white/10">
               Novinky
             </Button>
           </div>
@@ -100,7 +100,7 @@ export default function Hero({ nextMatch }: HeroProps) {
               background: "radial-gradient(circle, color-mix(in srgb, var(--club-primary) 8%, transparent), transparent 70%)",
             }}
           />
-        <div className="relative bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6">
+        <div className="relative bg-white/90 backdrop-blur-sm border border-[var(--border)] rounded-2xl p-6 shadow-lg">
           <p className="text-[var(--text-muted)] text-xs uppercase tracking-widest mb-4">
             Příští zápas · {NEXT_MATCH.label}
           </p>
@@ -151,7 +151,7 @@ export default function Hero({ nextMatch }: HeroProps) {
       <div
         className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, transparent, #FFFFFF)",
+          background: "linear-gradient(to bottom, transparent, var(--bg-dark))",
         }}
       />
 

@@ -11,7 +11,7 @@ export default function SectionHeader({ title, subtitle, href, linkText }: Secti
   return (
     <div className="flex items-start justify-between gap-4">
       <div>
-        <h2 className="font-heading font-bold uppercase text-2xl md:text-3xl text-[var(--text-primary)]">
+        <h2 className="font-heading font-bold uppercase text-2xl md:text-3xl text-gray-900">
           {title}
         </h2>
         {subtitle && (
