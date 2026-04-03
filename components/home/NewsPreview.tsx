@@ -6,10 +6,26 @@ function formatDate(dateStr: string) {
   return date.toLocaleDateString("cs-CZ", { day: "numeric", month: "long", year: "numeric" });
 }
 
+function categoryGradient(category: string): string {
+  const lower = category.toLowerCase();
+  if (lower === "muži") return "bg-gradient-to-br from-[var(--club-primary)]/20 to-[var(--bg-surface)]";
+  if (lower === "klub") return "bg-gradient-to-br from-[var(--club-secondary)]/20 to-[var(--bg-surface)]";
+  if (lower === "mládež") return "bg-gradient-to-br from-[var(--club-accent)]/20 to-[var(--bg-surface)]";
+  return "bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-surface)]";
+}
+
+function ImagePlaceholder({ category, height }: { category: string; height: string }) {
+  return (
+    <div className={`${height} ${categoryGradient(category)} flex items-center justify-center text-4xl opacity-10`}>
+      ⚽
+    </div>
+  );
+}
+
 function LargeArticleCard({ article }: { article: Article }) {
   return (
     <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden md:col-span-2">
-      <div className="h-48 bg-[var(--bg-surface)]" />
+      <ImagePlaceholder category={article.category} height="h-48" />
       <div className="p-5">
         <div className="flex items-center gap-1">
           <span className="text-[var(--text-muted)] text-xs">{formatDate(article.date)}</span>
@@ -31,7 +47,7 @@ function LargeArticleCard({ article }: { article: Article }) {
 function SmallArticleCard({ article }: { article: Article }) {
   return (
     <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden">
-      <div className="h-32 bg-[var(--bg-surface)]" />
+      <ImagePlaceholder category={article.category} height="h-32" />
       <div className="p-4">
         <div className="flex items-center gap-1">
           <span className="text-[var(--text-muted)] text-xs">{formatDate(article.date)}</span>

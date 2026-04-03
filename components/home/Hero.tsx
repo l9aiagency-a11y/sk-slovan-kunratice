@@ -14,8 +14,19 @@ const NEXT_MATCH = {
 
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-4 lg:px-8 py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[70vh] items-center">
+    <section className="relative max-w-7xl mx-auto px-4 lg:px-8 py-20 lg:py-28 overflow-hidden">
+      {/* Faint grid pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+          opacity: 0.03,
+        }}
+      />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left — Club identity */}
         <div>
           <span className="inline-block text-[10px] uppercase font-semibold text-[var(--club-primary)] border border-[var(--club-primary)]/30 bg-[var(--club-primary)]/10 rounded-full px-3 py-1 mb-4">
@@ -43,7 +54,20 @@ export default function Hero() {
         </div>
 
         {/* Right — Next match widget */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6">
+        <div className="relative">
+          {/* Radial glow behind the widget */}
+          <div
+            className="absolute pointer-events-none blur-3xl"
+            style={{
+              width: "500px",
+              height: "500px",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              background: "radial-gradient(circle, color-mix(in srgb, var(--club-primary) 8%, transparent), transparent 70%)",
+            }}
+          />
+        <div className="relative bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6">
           <p className="text-[var(--text-muted)] text-xs uppercase tracking-widest mb-4">
             Příští zápas · {NEXT_MATCH.label}
           </p>
@@ -87,6 +111,7 @@ export default function Hero() {
           <p className="text-[var(--text-muted)] text-xs text-center mt-3">
             {NEXT_MATCH.label} · {NEXT_MATCH.time} · {NEXT_MATCH.venue}
           </p>
+        </div>
         </div>
       </div>
     </section>

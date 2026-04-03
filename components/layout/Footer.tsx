@@ -28,7 +28,7 @@ export default function Footer() {
               alt="SK Slovan Kunratice"
               width={48}
               height={48}
-              className="h-12 w-auto"
+              className="object-contain"
             />
             <p className="font-heading font-bold text-[var(--text-primary)]">
               SK Slovan Kunratice
