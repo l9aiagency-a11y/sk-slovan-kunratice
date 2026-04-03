@@ -114,6 +114,23 @@ export default function Hero() {
         </div>
         </div>
       </div>
+      {/* Bottom gradient fade */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, transparent, var(--bg-dark))",
+        }}
+      />
+
+      {/* Club-primary accent line at bottom */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] pointer-events-none"
+        style={{
+          width: "600px",
+          background: "linear-gradient(90deg, transparent, var(--club-primary), transparent)",
+          opacity: 0.6,
+        }}
+      />
     </section>
   );
 }
