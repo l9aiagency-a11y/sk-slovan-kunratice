@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { StandingRow } from "@/lib/mock-data";
 import FormIndicator from "./FormIndicator";
 
@@ -45,7 +46,6 @@ export default function StandingsTable({ rows, highlightTeam }: StandingsTablePr
           <tbody>
             {rows.map((row, index) => {
               const isHighlighted = row.isOwnTeam || row.team === highlightTeam;
-              // Use index+1 as position fallback — the scraper may store all positions as 1
               const displayPosition = rows.length > 1 && rows.every(r => r.position === rows[0].position)
                 ? index + 1
                 : row.position;
@@ -64,9 +64,23 @@ export default function StandingsTable({ rows, highlightTeam }: StandingsTablePr
                     </span>
                   </td>
                   <td className="px-3 py-3">
-                    <span className="font-semibold text-sm text-gray-900">
-                      {row.team}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {row.logoUrl ? (
+                        <Image
+                          src={row.logoUrl}
+                          alt={row.team}
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 object-contain shrink-0"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="w-5 h-5 rounded-full bg-gray-200 shrink-0" />
+                      )}
+                      <span className="font-semibold text-sm text-gray-900">
+                        {row.team}
+                      </span>
+                    </div>
                   </td>
                   <td className="px-3 py-3 text-center">
                     <span className="text-sm text-gray-700 tabular-nums">

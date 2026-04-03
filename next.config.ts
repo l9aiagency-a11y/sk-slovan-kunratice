@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "xpzotpuzhzdrvecnhdfs.supabase.co",
       },
+      {
+        protocol: "https",
+        hostname: "www.fotbalpraha.cz",
+      },
     ],
   },
 };

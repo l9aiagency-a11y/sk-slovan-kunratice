@@ -1,6 +1,7 @@
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_RESULTS } from "@/lib/mock-data";
 import type { Match } from "@/lib/mock-data";
+import { getTeamLogos, resolveTeamLogo } from "@/lib/team-logos";
 import PageHero from "@/components/ui/PageHero";
 import MatchesClient from "@/components/zapasy/MatchesClient";
 import FadeIn from "@/components/ui/FadeIn";
@@ -30,6 +31,8 @@ export default async function ZapasyPage({
 }) {
   const { team } = await searchParams;
   const sb = createServerClient();
+
+  const logos = await getTeamLogos();
 
   const { data: matchRows } = await sb
     .from("matches")
@@ -64,6 +67,8 @@ export default async function ZapasyPage({
             awayTeam: m.away_team,
             homeScore: m.home_score,
             awayScore: m.away_score,
+            homeLogo: resolveTeamLogo(m.home_team, logos),
+            awayLogo: resolveTeamLogo(m.away_team, logos),
             isHome: m.is_home,
             result,
             competition: m.competition,

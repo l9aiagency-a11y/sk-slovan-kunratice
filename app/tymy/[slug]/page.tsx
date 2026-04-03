@@ -12,6 +12,7 @@ import {
   type StandingRow,
 } from "@/lib/mock-data";
 import { TEAM_COMPETITIONS } from "@/lib/scraper";
+import { getTeamLogos, resolveTeamLogo } from "@/lib/team-logos";
 import PageHero from "@/components/ui/PageHero";
 import EmptyState from "@/components/ui/EmptyState";
 import MatchCard from "@/components/ui/MatchCard";
@@ -99,6 +100,9 @@ export default async function TeamDetailPage({
     ? `${compConfig.competitionName} 2025/2026`
     : null;
 
+  // Load team logos
+  const logos = await getTeamLogos();
+
   // ── Fetch standings for this team's competition ──
   let standings: StandingRow[] = [];
   if (competitionKey) {
@@ -121,6 +125,7 @@ export default async function TeamDetailPage({
         points: s.points,
         form: Array.isArray(s.form) ? s.form : [],
         isOwnTeam: s.is_own_team,
+        logoUrl: resolveTeamLogo(s.team_name, logos) || null,
       }));
     }
   }
@@ -213,6 +218,8 @@ export default async function TeamDetailPage({
       awayTeam: m.away_team,
       homeScore: m.home_score,
       awayScore: m.away_score,
+      homeLogo: resolveTeamLogo(m.home_team, logos),
+      awayLogo: resolveTeamLogo(m.away_team, logos),
       isHome: m.is_home,
       result: computeResult(m),
       competition: m.competition,
@@ -236,6 +243,8 @@ export default async function TeamDetailPage({
       awayTeam: m.away_team,
       homeScore: null,
       awayScore: null,
+      homeLogo: resolveTeamLogo(m.home_team, logos),
+      awayLogo: resolveTeamLogo(m.away_team, logos),
       isHome: m.is_home,
       result: null,
       competition: m.competition,

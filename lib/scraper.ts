@@ -98,6 +98,7 @@ export interface ScrapedStanding {
   goals_against: number;
   points: number;
   is_own_team: boolean;
+  logo_url: string | null;
 }
 
 export async function scrapeStandings(
@@ -129,6 +130,12 @@ export async function scrapeStandings(
         teamTd.text().trim();
       teamName = teamName.replace(/\s+/g, ' ').trim();
 
+      // Team logo
+      const logoImg = teamTd.find('img').attr('src') || $(tds[0]).find('img').attr('src') || null;
+      const logoUrl = logoImg
+        ? (logoImg.startsWith('http') ? logoImg : `${BASE_URL}${logoImg}`).split('?')[0]
+        : null;
+
       const played = parseInt($(tds[2]).text().trim(), 10) || 0;
       const won = parseInt($(tds[3]).text().trim(), 10) || 0;
       const drawn = parseInt($(tds[4]).text().trim(), 10) || 0;
@@ -155,6 +162,7 @@ export async function scrapeStandings(
         goals_against: goalsAgainst,
         points,
         is_own_team: isOwnTeam,
+        logo_url: logoUrl,
       });
     });
 

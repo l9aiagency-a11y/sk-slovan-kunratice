@@ -8,6 +8,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { createServerClient } from "@/lib/supabase";
 import type { Match, StandingRow, Article } from "@/lib/mock-data";
+import { getTeamLogos, resolveTeamLogo } from "@/lib/team-logos";
 
 // Revalidate every 5 minutes so data stays fresh
 export const revalidate = 300;
@@ -56,6 +57,9 @@ export default async function Home() {
       }
     : undefined;
 
+  // Load team logos
+  const logos = await getTeamLogos();
+
   // ── Fetch recent results (matches with scores) ────────────────
   const { data: recentRows } = await sb
     .from("matches")
@@ -92,6 +96,8 @@ export default async function Home() {
             awayTeam: m.away_team,
             homeScore: m.home_score,
             awayScore: m.away_score,
+            homeLogo: resolveTeamLogo(m.home_team, logos),
+            awayLogo: resolveTeamLogo(m.away_team, logos),
             isHome: m.is_home,
             result,
             competition: m.competition,
@@ -108,7 +114,7 @@ export default async function Home() {
     .eq("competition", "Pražský přebor mužů 2025/2026")
     .order("position", { ascending: true });
 
-  const standings: StandingRow[] | undefined =
+  const allStandings: StandingRow[] | undefined =
     standingsRows && standingsRows.length > 0
       ? standingsRows.map((s) => ({
           position: s.position,
@@ -122,8 +128,21 @@ export default async function Home() {
           points: s.points,
           form: Array.isArray(s.form) ? s.form : [],
           isOwnTeam: s.is_own_team,
+          logoUrl: resolveTeamLogo(s.team_name, logos) || null,
         }))
       : undefined;
+
+  // Condensed view: top 5 + Kunratice row if not already in top 5
+  let standings: StandingRow[] | undefined;
+  if (allStandings) {
+    const top5 = allStandings.slice(0, 5);
+    const kunratice = allStandings.find((s) => s.isOwnTeam);
+    if (kunratice && kunratice.position > 5) {
+      standings = [...top5, kunratice];
+    } else {
+      standings = top5;
+    }
+  }
 
   // ── Fetch articles ────────────────────────────────────────────
   const { data: articleRows } = await sb

@@ -26,6 +26,7 @@ export interface StandingRow {
   points: number;
   form: ("W" | "D" | "L")[];
   isOwnTeam: boolean;
+  logoUrl?: string | null;
 }
 
 export interface Article {

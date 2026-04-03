@@ -1,7 +1,7 @@
 import { createServerClient } from "@/lib/supabase";
 import { MOCK_STANDINGS } from "@/lib/mock-data";
 import type { StandingRow } from "@/lib/mock-data";
-import { getTeamLogos } from "@/lib/team-logos";
+import { getTeamLogos, resolveTeamLogo } from "@/lib/team-logos";
 import PageHero from "@/components/ui/PageHero";
 import CompetitionTabs from "@/components/ui/CompetitionTabs";
 import FadeIn from "@/components/ui/FadeIn";
@@ -81,7 +81,7 @@ export default async function TabulkaPage() {
       points: s.points,
       form: Array.isArray(s.form) ? s.form : [],
       isOwnTeam: s.is_own_team,
-      logoUrl: logos[s.team_name] || null,
+      logoUrl: resolveTeamLogo(s.team_name, logos) || null,
     });
   }
 

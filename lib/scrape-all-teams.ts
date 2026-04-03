@@ -52,11 +52,30 @@ export async function scrapeAndStoreAllTeams() {
         .delete()
         .eq('competition', competitionKey);
 
+      // Compute form (last 5 results) for each team from scraped matches
+      const teamFormMap = new Map<string, ('W' | 'D' | 'L')[]>();
+      if (result.matches.length > 0) {
+        // Sort matches by date descending
+        const sortedMatches = [...result.matches].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        );
+        for (const m of sortedMatches) {
+          if (m.home_score === null || m.away_score === null) continue;
+          const teamKey = m.is_home ? m.home_team : m.away_team;
+          const existing = teamFormMap.get(teamKey) || [];
+          if (existing.length >= 5) continue;
+          const ownScore = m.is_home ? m.home_score : m.away_score;
+          const oppScore = m.is_home ? m.away_score : m.home_score;
+          existing.push(ownScore > oppScore ? 'W' : ownScore < oppScore ? 'L' : 'D');
+          teamFormMap.set(teamKey, existing);
+        }
+      }
+
       const { error } = await sb.from('standings').insert(
         result.standings.map((s) => ({
           ...s,
           competition: competitionKey,
-          form: [],
+          form: teamFormMap.get(s.team_name) || [],
         })),
       );
       if (error) {

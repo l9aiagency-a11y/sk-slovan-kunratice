@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase";
+import { getTeamLogos, resolveTeamLogo } from "@/lib/team-logos";
 
 export const revalidate = 300;
 
@@ -61,6 +62,10 @@ export default async function MatchDetailPage({
 
   if (!m) notFound();
 
+  const logos = await getTeamLogos();
+  const homeLogo = resolveTeamLogo(m.home_team, logos);
+  const awayLogo = resolveTeamLogo(m.away_team, logos);
+
   const hasScore = m.home_score !== null && m.away_score !== null;
   const barColor = getResultColor(m.home_score, m.away_score, m.is_home);
 
@@ -74,7 +79,19 @@ export default async function MatchDetailPage({
         <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-6 sm:gap-10">
             {/* Home team */}
-            <div className="flex-1 text-right">
+            <div className="flex-1 flex flex-col items-end gap-2">
+              {homeLogo ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={homeLogo}
+                  alt={m.home_team}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 object-contain"
+                />
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-gray-200" />
+              )}
               <p
                 className={`font-heading font-bold text-lg sm:text-2xl uppercase ${
                   m.is_home
@@ -102,7 +119,19 @@ export default async function MatchDetailPage({
             </div>
 
             {/* Away team */}
-            <div className="flex-1 text-left">
+            <div className="flex-1 flex flex-col items-start gap-2">
+              {awayLogo ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={awayLogo}
+                  alt={m.away_team}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 object-contain"
+                />
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-gray-200" />
+              )}
               <p
                 className={`font-heading font-bold text-lg sm:text-2xl uppercase ${
                   !m.is_home
